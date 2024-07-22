@@ -4,6 +4,8 @@ CC = avra
 init:
 	mkdir src
 	mkdir dist
+	cp include/$(INC).inc src/desc.inc
+	cp include/main.asm src/$(ENTRY).asm
 
 dist/build.hex: src/$(SRC).asm
 	$(CC) src/$(SRC).asm -o dist/build.hex -e dist/build.eep.hex -d dist/build.obj
@@ -15,3 +17,7 @@ run: src/$(SRC).asm
 clear: 
 	rm -rf dist/
 	mkdir dist
+
+delete:
+	rm -rf dist/
+	rm -rf src/
